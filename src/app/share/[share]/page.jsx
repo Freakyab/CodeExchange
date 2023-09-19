@@ -15,7 +15,7 @@ const CodePage = ({ params }) => {
   }, []);
 
   const getData = async () => {
-    const res = await fetch("http://localhost:5000/get", {
+    const res = await fetch("https://code-exchange-backend.vercel.app/get", {
       method: "POST",
       body: JSON.stringify({
         share: params.share,
