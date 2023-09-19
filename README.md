@@ -1,3 +1,26 @@
+# CodeExchange
+
+CodeExchange is a platform for sharing code among people and saving it indefinitely. It uses [Editor.js](https://editorjs.io/) for content editing and is built with [Next.js](https://nextjs.org/).
+
+Visit the website: [CodeExchange Website](https://codeexchange.vercel.app/)
+
+## Features and Information
+
+- **Code Sharing**: Share and discover code snippets.
+- **Data Permanence**: Code shared on CodeExchange is saved indefinitely.
+- **Editor.js**: We use Editor.js for content creation and editing.
+- **Built with Next.js**: The platform is built using Next.js for performance and efficiency.
+
+## Usage
+
+To use CodeExchange, simply visit the [website](https://codeexchange.vercel.app/). You can explore and search for code snippets, submit your own code, and collaborate with other users.
+
+## Contact
+
+If you have any questions or need support, you can contact us through the website or reach out via email at [your@email.com].
+
+Happy coding!
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
