@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [typedText, setTypedText] = useState("");
   const originalText =
-    "Crreate your personal code space by adding<br /><strong>http://localhost:3000/share/[your keyword]</strong> to the URL";
+    "Crreate your personal code space by adding<br /><strong>https://codeexchange.vercel.app//share/[your keyword]</strong> to the URL";
 
   useEffect(() => {
     let currentIndex = 0;
