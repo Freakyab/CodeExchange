@@ -15,9 +15,6 @@ Visit the website: [CodeExchange Website](https://codeexchange.vercel.app/)
 
 To use CodeExchange, simply visit the [website](https://codeexchange.vercel.app/). You can explore and search for code snippets, submit your own code, and collaborate with other users.
 
-## Contact
-
-If you have any questions or need support, you can contact us through the website or reach out via email at [your@email.com].
 
 Happy coding!
 
