@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
@@ -13,6 +14,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongodb": "^6.1.0"
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.5.2",
+    "socket.io": "^4.7.2"
   }
 }
