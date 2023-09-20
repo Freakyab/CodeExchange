@@ -3,7 +3,7 @@ import EditorJS from "@editorjs/editorjs";
 import { EDITOR_TOOLS } from "./EditorTools";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://code-exchange-backend.vercel.app');
 
 const EditorBlock = ({ data, onChange,controls ,holder, share }) => {
 

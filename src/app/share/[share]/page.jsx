@@ -11,7 +11,7 @@ import styles from "../../Home.module.css"; // Import CSS module for local style
 import "react-toastify/dist/ReactToastify.css";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://code-exchange-backend.vercel.app/");
 
 const CodePage = ({ params }) => {
   const { share } = params;
