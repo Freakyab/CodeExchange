@@ -8,6 +8,7 @@ import styles from "../../Home.module.css"; // Import CSS module for local style
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 
+
 import "react-toastify/dist/ReactToastify.css";
 
 const CodePage = ({ params }) => {
@@ -18,7 +19,7 @@ const CodePage = ({ params }) => {
   }, []);
 
   const getData = async () => {
-    const res = await fetch("http://localhost:5000/get", {
+    const res = await fetch("https://code-exchange-backend.vercel.app/get", {
       method: "POST",
       body: JSON.stringify({
         share: params.share,
