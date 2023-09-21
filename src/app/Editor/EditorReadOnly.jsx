@@ -6,7 +6,7 @@ const EditorBlock = ({ data, holder,onChange, share }) => {
   useEffect(() => {
     const sendData = async (content) => {
       try {
-        const res = await fetch("https://code-exchange-backend.vercel.app/create/", {
+        const res = await fetch("http://localhost:5000/create/", {
           method: "POST",
           body: JSON.stringify({
             code: content, // Use a different variable name here to avoid conflicts
@@ -32,7 +32,7 @@ const EditorBlock = ({ data, holder,onChange, share }) => {
         autofocus: true,
         onChange: async (api, event) => {
           const savedData = await api.saver.save();
-          // control.setUpdateCode(savedData);
+          // controls.setSelfText(true);
           sendData(savedData);
         }
       });
