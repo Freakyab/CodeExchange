@@ -41,8 +41,12 @@ export default function Home() {
               <button
                 className="rounded-r-lg bg-blue-500 hover:bg-blue-600  px-4 py-2"
                 onClick={() => {
+                  if(keyword)
                   window.location.href =
                     "https://codeexchange.vercel.app/share/" + keyword;
+                  else{
+                    alert("Please enter a keyword")
+                  }
                 }}>
                 Get to page
               </button>
