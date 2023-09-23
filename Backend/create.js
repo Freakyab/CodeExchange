@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
       if(updatedDocument?.code?.blocks?.length == 0){
         await collection.deleteOne({ share: share });
       }
-    }, 10000);
+    }, 2000);
 
 
     if (result) res.json({ isSuccess: true });
