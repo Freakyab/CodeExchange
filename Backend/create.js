@@ -8,7 +8,6 @@ const client = new MongoClient(uri);
 
 router.post("/", async (req, res) => {
   const { code, share } = req.body;
-  console.log(code, share)
   try {
     await client.connect();
     const database = client.db("codeExchange");
@@ -32,6 +31,15 @@ router.post("/", async (req, res) => {
         share: share,
       });
     }    
+    
+    setTimeout(async () => {
+      const updatedDocument = await collection.findOne({ share: share });
+      if(updatedDocument?.code?.blocks?.length == 0){
+        await collection.deleteOne({ share: share });
+      }
+    }, 10000);
+
+
     if (result) res.json({ isSuccess: true });
     else res.json({ isSuccess: false });
   } catch (e) {
