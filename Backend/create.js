@@ -34,10 +34,10 @@ router.post("/", async (req, res) => {
     
     setTimeout(async () => {
       const updatedDocument = await collection.findOne({ share: share });
-      if(updatedDocument.code.blocks.length == 0){
+      if(updatedDocument?.code?.blocks?.length == 0){
         await collection.deleteOne({ share: share });
       }
-    }, 3600 * 1000);
+    }, 10000);
 
 
     if (result) res.json({ isSuccess: true });
