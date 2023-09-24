@@ -1,21 +1,27 @@
-'use client';
-import {  useState } from "react";
+"use client";
+import { useState } from "react";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen p-4 lg:p-24">
-      <h1 className="text-4xl font-bold mb-4 capitalize">Welcome to CodeExchange</h1>
+    <main
+      className="flex flex-col items-center justify-center min-h-screen "
+      style={{
+        backgroundImage: `linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)`,
+      }}>
+      <h1 className="text-4xl font-bold mb-10 py-1 capitalize link link-underline ">
+        Welcome to CodeExchange
+      </h1>
       <p className="w-full overflow-x-auto text-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-4 pt-6 md:pb-6 md:pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-  Get started by adding a keyword to{" "}
-  <code className="font-mono font-bold ">
-    "https://codeexchange.vercel.app/share/yourkeyword"
-  </code>{" "}
-  in the URL
-</p>
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold">Enter your Keyword here</h2>
+        Get started by adding a keyword to{" "}
+        <code className="font-mono font-bold ">
+          "https://codeexchange.vercel.app/share/yourkeyword"
+        </code>{" "}
+        in the URL
+      </p>
+      <div className="mt-4 py-5">
+        <h2 className="text-xl font-semibold py-1 capitalize link link-underline w-fit">Enter your Keyword here</h2>
         <div className="flex flex-col lg:flex-row">
           <input
             type="text"
@@ -32,8 +38,7 @@ export default function Home() {
               } else {
                 alert("Please enter a keyword");
               }
-            }}
-          >
+            }}>
             Get to page
           </button>
         </div>
@@ -44,9 +49,8 @@ export default function Home() {
           href="https://github.com/Freakyab/CodeExchange"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
+          rel="noopener noreferrer">
+          <h2 className="mb-3 text-2xl font-semibold ">
             Current version{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -63,8 +67,7 @@ export default function Home() {
           href="https://github.com/Freakyab/CodeExchange"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <h2 className="mb-3 text-2xl font-semibold">
             Copy to Clipboard{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -81,8 +84,7 @@ export default function Home() {
           href="https://github.com/Freakyab/CodeExchange"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           <h2 className="mb-3 text-2xl font-semibold">
             Download Code as TXT{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
