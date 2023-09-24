@@ -32,12 +32,18 @@ router.post("/", async (req, res) => {
       });
     }    
     
-    setTimeout(async () => {
-      const updatedDocument = await collection.findOne({ share: share });
-      if(updatedDocument?.code?.blocks?.length == 0){
-        await collection.deleteOne({ share: share });
-      }
-    }, 10000);
+   // Instead of setTimeout, consider using a background worker or job queue for more reliability.
+setTimeout(async () => {
+  try {
+    const updatedDocument = await collection.findOne({ share: share });
+    if (updatedDocument?.code?.blocks?.length == 0) {
+      await collection.deleteOne({ share: share });
+    }
+  } catch (error) {
+    console.error("Error during deletion:", error);
+  }
+}, 2000);
+
 
 
     if (result) res.json({ isSuccess: true });
