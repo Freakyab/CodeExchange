@@ -7,12 +7,13 @@ import { useState, useEffect, useRef } from "react";
 import styles from "../../Home.module.css"; // Import CSS module for local styles
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
-
+import Loader from "../../assets/loader";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const CodePage = ({ params }) => {
   const [code, setCode] = useState("");
+  const [displayLoader, setDisplayLoader] = useState(true);
   const textInputRef = useRef(null);
   useEffect(() => {
     getData();
@@ -20,7 +21,7 @@ const CodePage = ({ params }) => {
 
   const getData = async () => {
     const res = await fetch("https://code-exchange-backend.vercel.app/get", {
-    // const res = await fetch("http://localhost:5000/get", {
+      // const res = await fetch("http://localhost:5000/get", {
       method: "POST",
       body: JSON.stringify({
         share: params.share,
@@ -30,6 +31,7 @@ const CodePage = ({ params }) => {
       },
     });
     const data = await res.json();
+    setDisplayLoader(false);
     console.log(data);
     if (data.isSuccess) setCode(data.code);
   };
@@ -71,30 +73,36 @@ const CodePage = ({ params }) => {
   };
 
   return (
-    <div className={styles.fancyBackground}>
-      <div className="bg-white rounded-lg shadow-2xl m-4 w-[70vw]">
-        <div className="bg-gray-700 text-white py-4 px-6 rounded-t-lg flex justify-between">
-          <h1 className="text-xl font-semibold">CodeExchange</h1>
-          <div>
-            <button onClick={handleCopy} className="px-4">
-              <BsFillClipboardFill size={20} />
-            </button>
-            <button onClick={handleDownload}>
-              <BsDownload size={20} />
-            </button>
+    <>
+      {displayLoader ? (
+        <Loader />
+      ) : (
+        <div className={styles.fancyBackground}>
+          <div className="bg-white rounded-lg shadow-2xl m-4 w-[70vw]">
+            <div className="bg-gray-700 text-white py-4 px-6 rounded-t-lg flex justify-between">
+              <h1 className="text-xl font-semibold">CodeExchange</h1>
+              <div>
+                <button onClick={handleCopy} className="px-4">
+                  <BsFillClipboardFill size={20} />
+                </button>
+                <button onClick={handleDownload}>
+                  <BsDownload size={20} />
+                </button>
+              </div>
+            </div>
+            <div ref={textInputRef}>
+              <EditorBlock
+                data={code}
+                onChange={setCode}
+                holder="editorjs-container"
+                share={params.share}
+              />
+            </div>
           </div>
+          <ToastContainer />
         </div>
-        <div ref={textInputRef}>
-          <EditorBlock
-            data={code}
-            onChange={setCode}
-            holder="editorjs-container"
-            share={params.share}
-          />
-        </div>
-      </div>
-      <ToastContainer />
-    </div>
+      )}
+    </>
   );
 };
 

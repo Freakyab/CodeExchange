@@ -18,8 +18,16 @@ body {
   --background-end-rgb: 255, 255, 255;
   --primary-color: #3498db;
   
+	--hue: 223;
+	--bg: hsl(var(--hue), 10%, 90%);
+	--fg: hsl(var(--hue), 10%, 10%);
+	--primary: hsl(var(--hue), 90%, 55%);
+	--primary-l: hsl(var(--hue), 90%, 65%);
+	--primary-d: hsl(var(--hue), 90%, 45%);
+	--white: hsl(var(--hue), 10%, 100%);
+	--white-d: hsl(var(--hue), 10%, 45%);
+	/* font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320)); */
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -27,6 +35,8 @@ body {
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+
 
 html {
   background: #fdfdfd;
@@ -56,4 +66,18 @@ h4{
 
 textarea {
   height: 100vh;
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#000000, #000000);
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .5s ease-in-out;
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 0 100%
 }
