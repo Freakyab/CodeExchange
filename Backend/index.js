@@ -10,6 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/create", require("./create"));
 app.use("/get", require("./get"));
+app.use("/login", require("./login"));
+app.use("/signup", require("./signup"));
+app.use("/accountGet", require("./accountGet"));
+app.use("/accountCreate", require("./accountCreate"));
 
 app.get("/", async (req, res) => {
   return res.status(200).send("Working");
