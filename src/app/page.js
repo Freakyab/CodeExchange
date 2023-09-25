@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
+  const [sessionKey, setSessionKey] = useState("");
   const [displayLogin, setDisplayLogin] = useState(false);
   const [isSession, setIsSession] = useState(false);
   const { data: session } = useSession();
@@ -79,15 +80,15 @@ export default function Home() {
                 <input
                   type="text"
                   className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0 "
-                  value={keyword}
-                  onChange={(e) => setKeyword(e.target.value)}
+                  value={sessionKey}
+                  onChange={(e) => setSessionKey(e.target.value)}
                 />
                 <button
                   className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white"
                   onClick={() => {
                     if (keyword) {
                       window.location.href =
-                        "https://codeexchange.vercel.app/share/" + keyword;
+                        "https://codeexchange.vercel.app/account/" + sessionKey;
                     } else {
                       alert("Please enter a keyword");
                     }
