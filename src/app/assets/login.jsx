@@ -4,11 +4,12 @@ import { signIn } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGoogle } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 // import { AiFillGithub } from 'react-icons/ai';
 // import Loader from "@/components/loader";
 
 const LoginPopup = ({setDisplayLogin,displayLogin}) => {
-
+  const router = useRouter();
 
   const handleLoginGoogle = async (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const LoginPopup = ({setDisplayLogin,displayLogin}) => {
     });
     setDisplayLogin(false);
     if (res?.error) {
-      console.log(res.error);
+      router.push("/dashboard");
       toast.error(res.error, {
         position: "top-left",
         autoClose: 5000,
@@ -26,7 +27,7 @@ const LoginPopup = ({setDisplayLogin,displayLogin}) => {
         draggable: true,
       });
     } else if (res?.url) {
-      console.log(res.url);
+      router.push("/dashboard");
     }
   };
   
