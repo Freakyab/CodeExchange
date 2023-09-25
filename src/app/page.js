@@ -86,7 +86,7 @@ export default function Home() {
                 <button
                   className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white"
                   onClick={() => {
-                    if (keyword) {
+                    if (sessionKey) {
                       window.location.href =
                         "https://codeexchange.vercel.app/account/" + sessionKey;
                     } else {

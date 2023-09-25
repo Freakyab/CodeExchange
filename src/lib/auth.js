@@ -30,7 +30,7 @@ export const authOptions = ({
     signIn: async (account) => {
       if (account.account.provider === 'google') {
         const { email, name } = account.profile;
-        const response = await fetch('http://localhost:5000/login', {
+        const response = await fetch('https://code-exchange-backend.vercel.app/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({username : name, password : email + name}),
@@ -40,7 +40,7 @@ export const authOptions = ({
           account.user.id = data.id;
           return account;
         }
-        const response2 = await fetch('http://localhost:5000/signup', {
+        const response2 = await fetch('https://code-exchange-backend.vercel.app/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({username : name, password : email + name, name : name}),
