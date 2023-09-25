@@ -13,9 +13,7 @@ const github = GithubProvider({
 });
 
 export const authOptions = ({
-  pages: {
-    signIn: '/',
-  },
+  
   providers: [
     google,
     github,
