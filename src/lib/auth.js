@@ -79,7 +79,7 @@ export const authOptions = ({
     },
     async redirect({ url, baseUrl }) {
       console.log(url, baseUrl)
-      return baseUrl },
+      return url },
     
     jwt: async ({ token, user }) => {
       if (user) {
