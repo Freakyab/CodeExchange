@@ -13,7 +13,7 @@ const LoginPopup = ({setDisplayLogin,displayLogin}) => {
   const handleLoginGoogle = async (e) => {
     e.preventDefault();
     const res = await signIn("google", {
-      callbackUrl: `/`,
+      callbackUrl: ` https://code-exchange.vercel.app/`,
     });
     setDisplayLogin(false);
     if (res?.error) {
