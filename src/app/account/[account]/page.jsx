@@ -28,8 +28,8 @@ const CodePage = ({ params }) => {
   }, [session, id]);
 
   const getData = async () => {
-    // const res = await fetch("https://code-exchange-backend.vercel.app/get", {
-    const res = await fetch("http://localhost:5000/accountGet", {
+    const res = await fetch("https://code-exchange-backend.vercel.app/accountGet", {
+    // const res = await fetch("http://localhost:5000/accountGet", {
       method: "POST",
       body: JSON.stringify({
         account: params.account,
@@ -100,7 +100,7 @@ const CodePage = ({ params }) => {
               <h1
                 className="text-xl font-semibold"
                 onClick={() =>
-                  (window.location.href = "http://localhost:3000/")
+                  (window.location.href = "https://code-exchange-backend.vercel.app")
                 }>
                 CodeExchange
               </h1>

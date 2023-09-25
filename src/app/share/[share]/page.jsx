@@ -81,7 +81,7 @@ const CodePage = ({ params }) => {
           <div className="bg-white rounded-lg shadow-2xl m-4 w-[70vw]">
             <div className="bg-gray-700 text-white py-4 px-6 rounded-t-lg flex justify-between">
               <h1 className="text-xl font-semibold"
-                onClick = {()=> window.location.href = "http://localhost:3000/"}
+                onClick = {()=> window.location.href = "https://code-exchange-backend.vercel.app"}
               >CodeExchange</h1>
               <div>
                 <button onClick={handleCopy} className="px-4">

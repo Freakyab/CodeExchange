@@ -7,10 +7,10 @@ const EditorBlock = ({ data, toggle, account, holder, onChange, share,_id }) => 
     const sendData = async (content) => {
       if (account) {
         try {
-          const res = await fetch("http://localhost:5000/accountCreate/", {
-          // const res = await fetch(
-            // "https://code-exchange-backend.vercel.app/accountCreate/",
-            // {
+          // const res = await fetch("http://localhost:5000/accountCreate/", {
+          const res = await fetch(
+            "https://code-exchange-backend.vercel.app/accountCreate/",
+            {
               method: "POST",
               body: JSON.stringify({
                 code: content, // Use a different variable name here to avoid conflicts
