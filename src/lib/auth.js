@@ -13,10 +13,7 @@ const github = GithubProvider({
 });
 
 export const authOptions = ({
-   site : 'https://code-exchange.vercel.app',
-  pages: {
-    signIn: '/',
-  },
+  
   providers: [
     google,
     github,
