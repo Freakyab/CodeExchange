@@ -1,13 +1,13 @@
-import GoogleProvider from 'next-auth/providers/google';
-import GithubProvider from 'next-auth/providers/github';
-import CredentialsProvider from 'next-auth/providers/credentials';
-require('dotenv').config();
+import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
+require("dotenv").config();
 
 const credentials = CredentialsProvider({
-  name: 'Credentials',
+  name: "Credentials",
   credentials: {
-    username: { label: 'Username', type: 'text' },
-    password: { label: 'Password', type: 'password' },
+    username: { label: "Username", type: "text" },
+    password: { label: "Password", type: "password" },
   },
   authorize: async (credentials) => {
     const { username, password } = credentials;
@@ -17,10 +17,12 @@ const credentials = CredentialsProvider({
 
     try {
       const response = await fetch(
-        isSignUp ? 'https://blogger-play.vercel.app/signup' : 'https://blogger-play.vercel.app/login',
+        isSignUp
+          ? "https://blogger-play.vercel.app/signup"
+          : "https://blogger-play.vercel.app/login",
         {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             username,
             password,
@@ -33,10 +35,11 @@ const credentials = CredentialsProvider({
       if (data.success && data.id && data.name) {
         return { id: data.id, name: data.name };
       } else {
-        throw new Error('Authentication failed');
+        throw new Error("Authentication failed");
       }
     } catch (error) {
-      const errorMessage = error.response?.data?.message || 'Authentication failed';
+      const errorMessage =
+        error.response?.data?.message || "Authentication failed";
       throw new Error(errorMessage);
     }
   },
@@ -52,12 +55,11 @@ const github = GithubProvider({
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
 });
 
-export const authOptions = ({
-  
+export const authOptions = {
   providers: [
     google,
     github,
-    credentials
+    credentials,
     /* Add other providers here */
   ],
   session: {
@@ -67,47 +69,70 @@ export const authOptions = ({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     signIn: async (account) => {
-      if (account.account.provider === 'google') {
+      if (account.account.provider === "google") {
         const { email, name } = account.profile;
-        const response = await fetch('https://code-exchange-backend.vercel.app/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({username : name, password : email + name}),
-        });
+        const response = await fetch(
+          "https://code-exchange-backend.vercel.app/login",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: name, password: email + name }),
+          }
+        );
         const data = await response.json();
         if (data.success && data.id && data.name) {
           account.user.id = data.id;
           return account;
         }
-        const response2 = await fetch('https://code-exchange-backend.vercel.app/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({username : name, password : email + name, name : name}),
-        });
+        const response2 = await fetch(
+          "https://code-exchange-backend.vercel.app/signup",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: name,
+              password: email + name,
+              name: name,
+            }),
+          }
+        );
         const data2 = await response2.json();
         if (data2.success && data2.id && data2.name) {
           account.user.id = data2.id;
           return account;
         }
         return false;
-      }else{
-        if(account.account.provider === 'github'){
+      } else {
+        if (account.account.provider === "github") {
           const { login, node_id, name } = account.profile;
-          const response = await fetch('https://blogger-play.vercel.app/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({username : name, password : login + name + node_id}),
-          });
+          const response = await fetch(
+            "https://blogger-play.vercel.app/login",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: name,
+                password: login + name + node_id,
+              }),
+            }
+          );
           const data = await response.json();
           if (data.success && data.id && data.name) {
             account.user.id = data.id;
             return account;
           }
-          const response2 = await fetch('https://blogger-play.vercel.app/signup', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({username : name, password : login + name + node_id, name : name}),
-          });
+          const response2 = await fetch(
+            "https://blogger-play.vercel.app/signup",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: name,
+                password: login + name + node_id,
+                name: name,
+              }),
+            }
+          );
           const data2 = await response2.json();
           if (data2.success && data2.id && data2.name) {
             account.user.id = data2.id;
@@ -119,9 +144,13 @@ export const authOptions = ({
       return true;
     },
     async redirect({ url, baseUrl }) {
-      console.log(url, baseUrl)
-      return baseUrl },
-    
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    },
+
     jwt: async ({ token, user }) => {
       if (user) {
         token.user = user;
@@ -132,6 +161,5 @@ export const authOptions = ({
       session.user = token.user;
       return session;
     },
-    
   },
-});
+};
