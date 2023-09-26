@@ -100,7 +100,7 @@ const CodePage = ({ params }) => {
               <h1
                 className="text-xl font-semibold"
                 onClick={() =>
-                  (window.location.href = "https://code-exchange-backend.vercel.app")
+                  (window.location.href = "https://codeexchange.netlify.app")
                 }>
                 CodeExchange
               </h1>

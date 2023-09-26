@@ -51,10 +51,8 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
         draggable: true,
       });
       router.push("/");
-      setLoading(false);
     } else if (res?.url) {
-      router.push("/dashboard");
-      setLoading(false);
+      router.push("/");
     }
   };
 
