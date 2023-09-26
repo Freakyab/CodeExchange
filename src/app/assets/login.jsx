@@ -15,10 +15,11 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
   const handleLoginGoogle = async (e) => {
     e.preventDefault();
     const res = await signIn("google", {
-      callbackUrl: `${window.location.origin}/`,
+      callbackUrl: `https://codeexchange.vercel.app/dashboard`,
     });
     setDisplayLogin(false);
     if (res?.error) {
+      console.log(res.error);
       router.push("/");
       toast.error(res.error, {
         position: "top-left",
@@ -34,7 +35,6 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     const res = await signIn("credentials", {
       username: form.username,
