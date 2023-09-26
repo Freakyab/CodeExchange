@@ -18,8 +18,8 @@ const credentials = CredentialsProvider({
     try {
       const response = await fetch(
         isSignUp
-          ? "https://blogger-play.vercel.app/signup"
-          : "https://blogger-play.vercel.app/login",
+          ? "https://code-exchange-backend.vercel.app/signup"
+          : "https://code-exchange-backend.vercel.app/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -106,7 +106,7 @@ export const authOptions = {
         if (account.account.provider === "github") {
           const { login, node_id, name } = account.profile;
           const response = await fetch(
-            "https://blogger-play.vercel.app/login",
+            "https://code-exchange-backend.vercel.app/login",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -122,7 +122,7 @@ export const authOptions = {
             return account;
           }
           const response2 = await fetch(
-            "https://blogger-play.vercel.app/signup",
+            "https://code-exchange-backend.vercel.app/signup",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
