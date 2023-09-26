@@ -88,7 +88,7 @@ export default function Home() {
                   onClick={() => {
                     if (sessionKey) {
                       window.location.href =
-                        "https://codeexchange.netlify.app/account/" + sessionKey;
+                        "https://codeexchange.vercel.app/account/" + sessionKey;
                     } else {
                       alert("Please enter a keyword");
                     }
