@@ -1,6 +1,46 @@
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
+import CredentialsProvider from 'next-auth/providers/credentials';
 require('dotenv').config();
+
+const credentials = CredentialsProvider({
+  name: 'Credentials',
+  credentials: {
+    username: { label: 'Username', type: 'text' },
+    password: { label: 'Password', type: 'password' },
+  },
+  authorize: async (credentials) => {
+    const { username, password } = credentials;
+
+    // Check if the request is for sign-up or login
+    const isSignUp = !!credentials.name;
+
+    try {
+      const response = await fetch(
+        isSignUp ? 'https://blogger-play.vercel.app/signup' : 'https://blogger-play.vercel.app/login',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username,
+            password,
+            name: isSignUp ? credentials.name : undefined,
+          }),
+        }
+      );
+      const data = await response.json();
+
+      if (data.success && data.id && data.name) {
+        return { id: data.id, name: data.name };
+      } else {
+        throw new Error('Authentication failed');
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || 'Authentication failed';
+      throw new Error(errorMessage);
+    }
+  },
+});
 
 const google = GoogleProvider({
   clientId: process.env.GOOGLE_CLIENT_ID,
@@ -17,6 +57,7 @@ export const authOptions = ({
   providers: [
     google,
     github,
+    credentials
     /* Add other providers here */
   ],
   session: {
