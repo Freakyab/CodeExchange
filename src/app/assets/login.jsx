@@ -15,7 +15,7 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
   const handleLoginGoogle = async (e) => {
     e.preventDefault();
     const res = await signIn("google", {
-      callbackUrl: `${window.location.origin}/`,
+      callbackUrl: `${window.location.origin}/dashboard`,
     });
     setDisplayLogin(false);
     if (res?.error) {
@@ -34,7 +34,6 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     const res = await signIn("credentials", {
       username: form.username,
