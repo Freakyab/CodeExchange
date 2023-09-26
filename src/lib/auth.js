@@ -48,7 +48,7 @@ const credentials = CredentialsProvider({
 const google = GoogleProvider({
   clientId: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  redirectUri: process.env.NEXTAUTH_URL, 
+  redirectUri: process.env.NEXTAUTH_URL + "/api/auth/callback/google",
 });
 
 const github = GithubProvider({
