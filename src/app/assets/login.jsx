@@ -15,7 +15,7 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
   const handleLoginGoogle = async (e) => {
     e.preventDefault();
     const res = await signIn("google", {
-      callbackUrl: `${window.location.origin}/dashboard`,
+      callbackUrl: `https://codeexchange.vercel.app/dashboard`,
     });
     setDisplayLogin(false);
     if (res?.error) {
