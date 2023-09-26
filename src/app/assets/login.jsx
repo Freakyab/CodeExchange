@@ -19,6 +19,7 @@ const LoginPopup = ({ setDisplayLogin, displayLogin }) => {
     });
     setDisplayLogin(false);
     if (res?.error) {
+      console.log(res.error);
       router.push("/");
       toast.error(res.error, {
         position: "top-left",

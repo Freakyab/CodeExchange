@@ -48,7 +48,16 @@ const credentials = CredentialsProvider({
 const google = GoogleProvider({
   clientId: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  redirectUri: process.env.NEXTAUTH_URL + "/api/auth/callback/google",
+  // callbackUrl: process.env.NEXTAUTH_URL + "/api/auth/callback/google",
+  authorization: {
+    params: {
+      access_type: "offline",
+      prompt: "consent",
+    },
+  },
+  
+  checks: ['none']
+
 });
 
 const github = GithubProvider({
@@ -79,25 +88,27 @@ export const authOptions = {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: name, password: email + name }),
           }
-        );
-        const data = await response.json();
-        if (data.success && data.id && data.name) {
-          account.user.id = data.id;
-          return account;
-        }
-        const response2 = await fetch(
-          "https://code-exchange-backend.vercel.app/signup",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              username: name,
-              password: email + name,
-              name: name,
-            }),
+          );
+          const data = await response.json();
+          console.log(data);
+          if (data.success && data.id && data.name) {
+            account.user.id = data.id;
+            return account;
           }
+          const response2 = await fetch(
+            "https://code-exchange-backend.vercel.app/signup",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: name,
+                password: email + name,
+                name: name,
+              }),
+            }
         );
         const data2 = await response2.json();
+        console.log(data2);
         if (data2.success && data2.id && data2.name) {
           account.user.id = data2.id;
           return account;
