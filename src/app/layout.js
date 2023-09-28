@@ -6,14 +6,12 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "CodeExchange",
-  description: "Platform to share code snippets",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <title>CodeExchange</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="Platform for exchanging code" content="CodeExchange" />
       <body>
         <GoogleOAuthProvider clientId="890009287717-ebtr62n0sv4mf3gn84p1su46d8a7hlcq.apps.googleusercontent.com">
           <Provider children={children}>
