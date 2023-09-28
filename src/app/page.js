@@ -1,23 +1,43 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useUser } from "./context/session";
 import Navbar from "./assets/navbar";
-import Login from "./assets/login";
-import { useSession } from "next-auth/react";
+import Login from "./loginPage";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [sessionKey, setSessionKey] = useState("");
   const [displayLogin, setDisplayLogin] = useState(false);
   const [isSession, setIsSession] = useState(false);
-  const { data: session } = useSession();
+  const { user } = useUser();
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    if (keyword) {
+      router.push("/share/" + keyword);
+    } else {
+      alert("Please enter a keyword");
+    }
+  };
+
+  const handleAccountSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    if (sessionKey) {
+      router.push("/account/" + sessionKey);
+    } else {
+      alert("Please enter a keyword");
+    }
+  };
 
   useEffect(() => {
-    if (session) {
+    if (user) {
       setIsSession(true);
     } else {
       setIsSession(false);
     }
-  }, [session]);
+  }, [user]);
 
   return (
     <>
@@ -26,12 +46,7 @@ export default function Home() {
         style={{
           backgroundImage: `linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)`,
         }}>
-        {displayLogin ? (
-          <Login
-            displayLogin={displayLogin}
-            setDisplayLogin={setDisplayLogin}
-          />
-        ) : null}
+        {displayLogin ? <Login setDisplayLogin={setDisplayLogin} /> : null}
         <Navbar displayLogin={displayLogin} setDisplayLogin={setDisplayLogin} />
         <h1 className="text-4xl font-bold mb-10 py-1 px-2 capitalize link link-underline ">
           Welcome to CodeExchange
@@ -44,57 +59,51 @@ export default function Home() {
           in the URL
         </p>
         <div className="mt-4 py-5">
-          <h2 className="text-xl font-semibold py-1 px-2 link link-underline w-fit"
-            title = "This is a local space, anyone can access this space"
-          >
-            Enter your Keyword here {isSession ? "for Local Space" : null}
+          <h2
+            className="text-xl font-semibold py-1 px-2 link link-underline w-fit"
+            title="This is a local space, anyone can access this space">
+            Enter your Keyword here
           </h2>
           <div className="flex flex-col lg:flex-row">
-            <input
-              type="text"
-              className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0 "
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-            />
-            <button
-              className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white"
-              onClick={() => {
-                if (keyword) {
-                  window.location.href =
-                    "https://codeexchange.netlify.app/share/" + keyword;
-                } else {
-                  alert("Please enter a keyword");
-                }
-              }}>
-              Get to page
-            </button>
-          </div>
-          {isSession ? (
-            <>
-              <h2 className="text-xl font-semibold pt-3 py-1 px-2 link link-underline w-fit"
-                title = "This is a secure space, only you can access this space"
-              >
-                Enter your Keyword here {isSession ? "for Secure Space" : null}
-              </h2>
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-col lg:flex-row">
                 <input
                   type="text"
-                  className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0 "
-                  value={sessionKey}
-                  onChange={(e) => setSessionKey(e.target.value)}
+                  className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0"
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
                 />
                 <button
-                  className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white"
-                  onClick={() => {
-                    if (sessionKey) {
-                      window.location.href =
-                        "https://codeexchange.vercel.app/account/" + sessionKey;
-                    } else {
-                      alert("Please enter a keyword");
-                    }
-                  }}>
+                  type="submit"
+                  className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white">
                   Get to page
                 </button>
+              </div>
+            </form>
+          </div>
+          {isSession ? (
+            <>
+              <h2
+                className="text-xl font-semibold pt-3 py-1 px-2 link link-underline w-fit"
+                title="This is a secure space, only you can access this space">
+                Enter your Keyword here
+              </h2>
+              <div className="flex flex-col lg:flex-row">
+                <form onSubmit={handleAccountSubmit}>
+                  <div className="flex flex-col lg:flex-row">
+                    <input
+                      type="text"
+                      className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0 "
+                      value={sessionKey}
+                      onChange={(e) => setSessionKey(e.target.value)}
+                    />
+                    <button
+                      type="submit"
+                      className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white">
+                      Get to page
+                    </button>
+                  </div>
+                </form>
               </div>
             </>
           ) : null}

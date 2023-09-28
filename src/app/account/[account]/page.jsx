@@ -3,8 +3,9 @@ const EditorBlock = dynamic(() => import("../../Editor/EditorReadOnly"), {
   ssr: false,
 });
 import dynamic from "next/dynamic";
-import { useState, useEffect, useRef } from "react";
-import { useSession } from "next-auth/react";
+import { useState, useRef,useEffect } from "react";
+import { useUser } from "../../context/session";
+import { useRouter } from "next/navigation";
 import styles from "../../Home.module.css"; // Import CSS module for local styles
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,17 +16,16 @@ import "react-toastify/dist/ReactToastify.css";
 const CodePage = ({ params }) => {
   const [code, setCode] = useState("");
   const [displayLoader, setDisplayLoader] = useState(true);
-  const [id, setId] = useState("");
+  const { user } = useUser();
+  const router = useRouter();
+  const id = user?.id;
   const [toggle, setToggle] = useState(false);
-  const { data: session } = useSession();
 
   const textInputRef = useRef(null);
-  useEffect(() => {
-    if (session) {
-      setId(session.user.id);
-    }
+
+  useEffect(() => {      
     getData();
-  }, [session, id]);
+  }, []);
 
   const getData = async () => {
     const res = await fetch("https://code-exchange-backend.vercel.app/accountGet", {
@@ -43,6 +43,8 @@ const CodePage = ({ params }) => {
       setToggle(false);
     } else {
       setCode(data.code);
+      console.log(data, "_id");
+      console.log(id, "id");
       if (id === data._id) {
         setToggle(false);
       } else {
@@ -98,9 +100,9 @@ const CodePage = ({ params }) => {
           <div className="bg-white rounded-lg shadow-2xl m-4 w-[70vw]">
             <div className="bg-gray-700 text-white py-4 px-6 rounded-t-lg flex justify-between">
               <h1
-                className="text-xl font-semibold"
+                className="text-xl font-semibold cursor-pointer"
                 onClick={() =>
-                  (window.location.href = "https://codeexchange.netlify.app")
+                 router.push('/')
                 }>
                 CodeExchange
               </h1>
