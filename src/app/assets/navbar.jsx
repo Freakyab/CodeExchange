@@ -1,29 +1,33 @@
 "use client";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-const Navbar = ({ displayLogin, setDisplayLogin }) => {
+import { useUser } from "../context/session";
+const Navbar = ({ setDisplayLogin }) => {
   const [displayText, setDisplayText] = useState("login");
-  const { data: session } = useSession();
+  const { user,setUser } = useUser();
+  useEffect(() => {
+    if (user) {
+      setDisplayText(user.name);
+    } else {
+      setDisplayText("login");
+    }
+  }, [user]);
 
-  const handleLogin = () => {
-    if (session) {
-      signOut();
+  const handleClick = () => {
+    if (user) {
+      setDisplayLogin(false);
+      setUser(null)
     } else {
       setDisplayLogin(true);
     }
   };
 
-  useEffect(() => {
-    if (session) {
-      setDisplayText(session.user.name);
-    }
-  }, [session]);
   return (
     <nav className="fixed w-full z-10 top-0 capitalize bg-gray-900 text-white p-4 flex justify-between">
       <p className="text-2xl font-bold">CodeExchange</p>
-      <p className="text-xl font-semibold cursor-pointer" onClick={handleLogin}>
-        {displayText}
+      <p
+        className="text-xl font-semibold cursor-pointer"
+        onClick={handleClick}>
+        <span>{displayText != "login" ? "Hi , " : null}</span> {displayText}
       </p>
     </nav>
   );

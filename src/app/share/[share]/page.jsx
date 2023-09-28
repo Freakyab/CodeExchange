@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { useState, useEffect, useRef } from "react";
 import styles from "../../Home.module.css"; // Import CSS module for local styles
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import Loader from "../../assets/loader";
 
@@ -14,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 const CodePage = ({ params }) => {
   const [code, setCode] = useState("");
   const [displayLoader, setDisplayLoader] = useState(true);
+  const router = useRouter();
   const textInputRef = useRef(null);
   useEffect(() => {
     getData();
@@ -80,9 +82,11 @@ const CodePage = ({ params }) => {
         <div className={styles.fancyBackground}>
           <div className="bg-white rounded-lg shadow-2xl m-4 w-[70vw]">
             <div className="bg-gray-700 text-white py-4 px-6 rounded-t-lg flex justify-between">
-              <h1 className="text-xl font-semibold"
-                onClick = {()=> window.location.href = "https://codeexchange.netlify.app"}
-              >CodeExchange</h1>
+              <h1
+                className="text-xl font-semibold cursor-pointer"
+                onClick={() => router.push("/")}>
+                CodeExchange
+              </h1>
               <div>
                 <button onClick={handleCopy} className="px-4">
                   <BsFillClipboardFill size={20} />
