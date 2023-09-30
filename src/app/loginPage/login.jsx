@@ -3,10 +3,12 @@ import { useGoogleOneTapLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import React, { useState } from "react";
 import { useUser } from "../context/session";
+import { motion } from "framer-motion";
 
 const Login = ({ setIsLogin, setDisplayLogin }) => {
   const [form, setForm] = useState({ username: "", password: "" });
   const { setUser } = useUser();
+
   useGoogleOneTapLogin({
     onSuccess: async (credentialResponse) => {
       const responsePayload = jwt_decode(credentialResponse.credential);
@@ -49,11 +51,12 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
             })
               .then((res) => res.json())
               .then((res) => {
+                console.log(res);
                 setUser(res);
                 setDisplayLogin(false);
               });
-            } else {
-              setUser(res);
+          } else {
+            setUser(res);
             setDisplayLogin(false);
           }
         });
@@ -83,12 +86,19 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
 
   return (
     <>
+      
+      <motion.div
+        initial={{ opacity: 1, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+      >
+     
       <span className="inline-flex">
         <h1 className="text-4xl py-2 font-bold text-center">
           Login
           <span
             className="opacity-50 text-2xl font-normal ml-2 cursor-pointer hover:opacity-100"
-            onClick={() => setIsLogin(false)}>
+            onClick={() => setIsLogin(false)}
+          >
             | Signup
           </span>
         </h1>
@@ -103,7 +113,6 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
             setForm({ ...form, username: e.target.value });
           }}
         />
-
         <input
           type="password"
           placeholder="Password"
@@ -113,13 +122,14 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
             setForm({ ...form, password: e.target.value });
           }}
         />
-
         <button
           className="bg-slate-900 text-white rounded-lg p-2"
-          onClick={handleLogin}>
+          onClick={handleLogin}
+        >
           Login
         </button>
       </form>
+      </motion.div>
     </>
   );
 };
