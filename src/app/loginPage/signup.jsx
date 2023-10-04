@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Signup = ({ setIsLogin, setStatusInfo }) => {
+const Signup = ({ setIsLogin }) => {
   const [form, setForm] = useState({ username: "", password: "", name: "" });
 
   const handleSignup = async (e) => {
@@ -12,14 +12,14 @@ const Signup = ({ setIsLogin, setStatusInfo }) => {
 
     // Form validation
     if (!form.username || !form.password || !form.name) {
-      setStatusInfo({ success: false, message: "Please fill all the fields" });
+      toast.error("Please fill all the fields");
       return;
     }
 
     try {
       const res = await fetch(
-        // "https://code-exchange-backend.vercel.app/signup",
-        "http://localhost:5000/signup",
+        "https://code-exchange-backend.vercel.app/signup",
+        // "http://localhost:5000/signup",
         {
           method: "POST",
           headers: {
@@ -36,13 +36,12 @@ const Signup = ({ setIsLogin, setStatusInfo }) => {
       const data = await res.json();
 
       if (data.success) {
-        setStatusInfo({ success: true, message: "Signup Successful" });
         setIsLogin(true);
       } else {
-        setStatusInfo({ success: false, message: "Signup Failed" });
+        toast.error("Something went wrong");
       }
     } catch (err) {
-      setStatusInfo({ success: false, message: "Signup Failed" });
+      toast.error("Something went wrong");
     }
   };
 
@@ -92,7 +91,17 @@ const Signup = ({ setIsLogin, setStatusInfo }) => {
             Signup
           </button>
         </form>
-        <ToastContainer />
+        <ToastContainer 
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss={true}
+        draggable={true}
+        pauseOnHover={true}
+      />
       </motion.div>
     </>
   );
