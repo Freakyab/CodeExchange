@@ -16,7 +16,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:5000/getCodeSpace", {
+      fetch( "https://code-exchange-backend.vercel.app/getCodeSpace",{
+      // fetch("http://localhost:5000/getCodeSpace", {
         method: "POST",
         body: JSON.stringify({
           owner: user?.id,
