@@ -14,6 +14,7 @@ app.use("/login", require("./login"));
 app.use("/signup", require("./signup"));
 app.use("/accountGet", require("./accountGet"));
 app.use("/accountCreate", require("./accountCreate"));
+app.use("/getCodeSpace", require("./getCodeSpace"));
 
 app.get("/", async (req, res) => {
   return res.status(200).send("Working");

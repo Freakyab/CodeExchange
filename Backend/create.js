@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
         }
       );
     } else {
+
        result = await collection.insertOne({
         code: code,
         share: share,
