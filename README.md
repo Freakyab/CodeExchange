@@ -1,42 +1,49 @@
 # CodeExchange
 
-CodeExchange is a platform for sharing code among people and saving it indefinitely. It uses [Editor.js](https://editorjs.io/) for content editing and is built with [Next.js](https://nextjs.org/).
+CodeExchange is a collaborative platform for sharing, storing, and discovering code snippets. The platform is built with [Next.js](https://nextjs.org/) and uses the [Editor.js](https://editorjs.io/) for content editing.
 
 Visit the website: [CodeExchange Website](https://codeexchange.vercel.app/)
 
-# What's New in CodeExchange v1.7
+# What's New in CodeExchange v1.9
 
-In CodeExchange version 1.7, we are excited to introduce several new features and improvements that enhance the overall user experience. Here's a detailed breakdown of what you can expect:
+In CodeExchange version 1.9, we are thrilled to introduce exciting updates and new features that elevate the coding experience. Here's a comprehensive overview of the latest enhancements:
 
 ## Copy to Clipboard
 
-We've added a convenient "Copy to Clipboard" feature. With a simple click, you can easily copy code snippets to your clipboard, making it effortless to integrate them into your own projects or share them with others.
+The "Copy to Clipboard" feature is still available, allowing you to effortlessly copy code snippets with a simple click for seamless integration into your projects or easy sharing.
 
 ## Download Code as TXT
 
-Another useful addition is the ability to download code snippets in a text format (e.g., .txt). This feature allows you to save code for offline use or future reference. It's a handy option for archiving code you find valuable.
+Our "Download Code as TXT" feature remains intact, enabling you to save code snippets in a text format (.txt) for offline use or future reference.
 
-## Tech Stack
+## New Features
 
-We have expanded our technology stack to provide even better performance and features. CodeExchange now utilizes the following technologies:
+### 1. Personal and Private Codespace
 
-- **MongoDB**: We've integrated MongoDB for efficient data storage and retrieval.
+Introducing personal and private codespaces! Now you can create your own codespace that is private and non-editable by others. This feature provides a secure and personalized environment for your code snippets.
 
-- **Next.js**: Our platform continues to be built on Next.js for enhanced performance and responsiveness.
+### 2. Google OAuth Login
 
-- **Express**: Express.js is used to handle backend functionalities, enhancing the overall speed and reliability of CodeExchange.
+We've added Google OAuth login for a more convenient and secure authentication process. You can now log in using your Google account, simplifying the user experience.
 
-## Features and Information
+### 3. Accounts for Enhanced Collaboration
 
-- **Code Sharing**: Share and discover code snippets.
-- **Data Permanence**: Code shared on CodeExchange is saved indefinitely.
+With user accounts, you can create and manage your personal codespaces. This feature facilitates collaboration by allowing users to have non-editable access to specific codespaces.
+
+## Tech Stack Update
+
+Our technology stack has been expanded and improved to enhance performance and provide additional features. CodeExchange now incorporates the following technologies:
+
+- **MongoDB**: Efficient data storage and retrieval.
+- **Next.js**: Ensures enhanced performance and responsiveness.
+- **Express**: Manages backend functionalities for improved speed and reliability.
+- **Motion.js**: Added for enhanced motion and animations.
+- **Google OAuth**: Integrated for secure and convenient user authentication.
 
 ## Usage
 
-To use CodeExchange, simply visit the [website](https://codeexchange.vercel.app/). You can explore and search for code snippets, submit your own code, and collaborate with other users.
+To explore the latest features of CodeExchange, visit the [website](https://codeexchange.vercel.app/). You can discover, share, and collaborate on code snippets with the added benefits of personal and private codespaces.
 
-The website is hosted on [Vercel](https://vercel.com/), providing a seamless and reliable user experience.
+The website is hosted on [Vercel](https://vercel.com/) for a seamless and reliable user experience.
 
-We are committed to improving your coding experience, and we welcome your feedback and suggestions. If you have any questions or need support, please don't hesitate to contact us through the website or via email at [your@email.com].
-
-Happy coding with CodeExchange v1.7!
+Happy coding with CodeExchange v1.9!
