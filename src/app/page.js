@@ -109,7 +109,7 @@ export default function Home() {
           ) : null}
         </div>
 
-        <div className="my-8 grid gap-8 lg:max-w-5xl lg:w-full lg:grid-cols-3 lg:text-left">
+        <div className="my-8 grid gap-8 lg:max-w-5xl lg:w-full lg:grid-cols-4 lg:text-left">
           <a
             href="https://github.com/Freakyab/CodeExchange"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -123,7 +123,7 @@ export default function Home() {
             </h2>
             <p className="max-w-[30ch] text-sm opacity-70">
               CodeExchange version{" "}
-              <code className="font-mono font-bold">1.7</code>, with new
+              <code className="font-mono font-bold">1.9</code>, with new
               features and improvements to enhance the user experience.
             </p>
           </a>
@@ -159,6 +159,21 @@ export default function Home() {
             <p className="max-w-[30ch] text-sm opacity-70">
               This feature allows you to save code for offline use or future
               reference.
+            </p>
+          </a>
+          <a
+            href="https://github.com/Freakyab/CodeExchange"
+            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            target="_blank"
+            rel="noopener noreferrer">
+            <h2 className="mb-3 text-2xl font-semibold">
+            Personal and Private Codespace{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                -&gt;
+              </span>
+            </h2>
+            <p className="max-w-[30ch] text-sm opacity-70">
+            Now you can create your own codespace that is private and non-editable by others however can be shareable.
             </p>
           </a>
         </div>
