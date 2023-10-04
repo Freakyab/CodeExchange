@@ -62,20 +62,21 @@ export default function Home() {
           <h2
             className="text-xl font-semibold py-1 px-2 link link-underline w-fit"
             title="This is a local space, anyone can access this space">
-            Enter your Keyword here
+            Enter your Keyword here {isSession ? " (Public)" : null}
           </h2>
           <div className="flex flex-col lg:flex-row">
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col lg:flex-row">
                 <input
                   type="text"
-                  className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0"
+                  placeholder="keyword"
+                  className="lg:rounded-l-lg px-4 py-3 bg-zinc-800 border-black border text-white outline-none mb-2 lg:mb-0"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
                 />
                 <button
                   type="submit"
-                  className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white">
+                  className="capitalize rounded-r-lg border border-black px-6 py-4 transition-all duration-300 ease-in-out transform hover:shadow-md hover:bg-blue-500 hover:border-blue-700 hover:text-white w-full">
                   Get to page
                 </button>
               </div>
@@ -86,20 +87,21 @@ export default function Home() {
               <h2
                 className="text-xl font-semibold pt-3 py-1 px-2 link link-underline w-fit"
                 title="This is a secure space, only you can access this space">
-                Enter your Keyword here
+                Enter your Keyword here (Private)
               </h2>
               <div className="flex flex-col lg:flex-row">
                 <form onSubmit={handleAccountSubmit}>
                   <div className="flex flex-col lg:flex-row">
                     <input
                       type="text"
-                      className="lg:rounded-l-lg p-2 bg-zinc-800/30 border-black border text-white outline-none mb-2 lg:mb-0 "
+                      placeholder="keyword"
+                      className="lg:rounded-l-lg px-4 py-3  bg-zinc-800 border-black border text-white outline-none mb-2 lg:mb-0"
                       value={sessionKey}
                       onChange={(e) => setSessionKey(e.target.value)}
                     />
                     <button
                       type="submit"
-                      className="lg:rounded-r-lg bg-blue-500 border-black border hover:bg-blue-600 px-4 py-2 text-white">
+                      className="capitalize rounded-r-lg border border-black px-6 py-4 transition-all duration-300 ease-in-out transform hover:shadow-md hover:bg-blue-500 hover:border-blue-700 hover:text-white w-full">
                       Get to page
                     </button>
                   </div>
@@ -167,13 +169,14 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer">
             <h2 className="mb-3 text-2xl font-semibold">
-            Personal and Private Codespace{" "}
+              Personal and Private Codespace{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
             </h2>
             <p className="max-w-[30ch] text-sm opacity-70">
-            Now you can create your own codespace that is private and non-editable by others however can be shareable.
+              Now you can create your own codespace that is private and
+              non-editable by others however can be shareable.
             </p>
           </a>
         </div>

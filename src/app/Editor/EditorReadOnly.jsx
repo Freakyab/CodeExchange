@@ -8,9 +8,7 @@ const EditorBlock = ({ data, toggle, account, holder, onChange, share,_id }) => 
       if (account) {
         try {
           // const res = await fetch("http://localhost:5000/accountCreate/", {
-          const res = await fetch(
-            "https://code-exchange-backend.vercel.app/accountCreate/",
-            {
+          const res = await fetch( "https://code-exchange-backend.vercel.app/accountCreate/",{
               method: "POST",
               body: JSON.stringify({
                 code: content, // Use a different variable name here to avoid conflicts
@@ -23,7 +21,9 @@ const EditorBlock = ({ data, toggle, account, holder, onChange, share,_id }) => 
             }
           );
           const responseData = await res.json();
-          console.log(responseData);
+          if(!responseData.isSuccess){
+            alert(responseData.message)
+          }
         } catch (error) {
           console.error("Error sending data:", error);
         }
