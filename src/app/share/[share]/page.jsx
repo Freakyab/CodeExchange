@@ -8,7 +8,7 @@ import styles from "../../Home.module.css"; // Import CSS module for local style
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
-import Loader from "../../assets/loader";
+import Loader from "../../components/loader";
 
 import "react-toastify/dist/ReactToastify.css";
 

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useUser } from "../context/session";
-import Navbar from "../assets/navbar";
+import Navbar from "../components/navbar";
 import { AiOutlineShareAlt, AiTwotoneEdit } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";

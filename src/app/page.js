@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useUser } from "./context/session";
-import Navbar from "./assets/navbar";
+import Navbar from "./components/navbar";
 import Login from "./loginPage";
 import { useRouter } from "next/navigation";
 

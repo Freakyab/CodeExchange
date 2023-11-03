@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import styles from "../../Home.module.css"; // Import CSS module for local styles
 import { BsFillClipboardFill, BsDownload } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
-import Loader from "../../assets/loader";
+import Loader from "../../components/loader";
 
 import "react-toastify/dist/ReactToastify.css";
 
