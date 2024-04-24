@@ -21,13 +21,15 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
           responsePayload.family_name +
           responsePayload.given_name,
         name: responsePayload.given_name + " " + responsePayload.family_name,
+        email: responsePayload.email,
       });
     },
   });
 
-  const handleGoogleSignIn = async ({ username, password, name }) => {
+  const handleGoogleSignIn = async ({ username, password, name,email }) => {
     try {
-      fetch("https://code-exchange-backend.vercel.app/login", {
+      // fetch("https://code-exchange-backend.vercel.app/login", {
+      fetch("http://localhost:5000/account/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,8 +41,10 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
       })
         .then((res) => res.json())
         .then((res) => {
+          console.log(res);
           if (!res.success) {
-            fetch("https://code-exchange-backend.vercel.app/signup", {
+            // fetch("https://code-exchange-backend.vercel.app/signup", {
+            fetch("http://localhost:5000/account/signup", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -49,6 +53,7 @@ const Login = ({ setIsLogin, setDisplayLogin }) => {
                 username: username,
                 password: password,
                 name: name,
+                email: email,
               }),
             })
               .then((res) => res.json())

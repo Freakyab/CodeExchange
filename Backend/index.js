@@ -1,32 +1,24 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+var cors = require('cors');
+var bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
+app.use(bodyParser.json());
+
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.use("/create", require("./create"));
-app.use("/get", require("./get"));
-app.use("/login", require("./login"));
-app.use("/signup", require("./signup"));
-app.use("/accountGet", require("./accountGet"));
-app.use("/accountCreate", require("./accountCreate"));
-app.use("/getCodeSpace", require("./getCodeSpace"));
-
-app.get("/", async (req, res) => {
-  return res.status(200).send("Working");
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
-app.use((req, res, next) => {
-  const contentLength = req.get('content-length');
-  console.log(`Request body size: ${contentLength} bytes`);
-  next();
-});
+app.use('/account', require('./controllers/account.controller'));
+app.use('/premium', require('./controllers/premium.controller'));
+app.use('/code', require('./controllers/code.controller'));
 
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Listening on the port ${PORT}`);
 });
