@@ -1,83 +1,45 @@
-/* #global.css */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  color: #a0aec0;
+}
+
+/* .swiper-button-prev, .swiper-button-next::after{
+  background: #a0aec0;
+} */
+
+.input-icon-color {
+  color: #a0aec0;
+}
+
+.d-hight{
+  height: calc(100vh - 7rem);
 }
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --primary-color: #3498db;
-  
-	--hue: 223;
-	--bg: hsl(var(--hue), 10%, 90%);
-	--fg: hsl(var(--hue), 10%, 10%);
-	--primary: hsl(var(--hue), 90%, 55%);
-	--primary-l: hsl(var(--hue), 90%, 65%);
-	--primary-d: hsl(var(--hue), 90%, 45%);
-	--white: hsl(var(--hue), 10%, 100%);
-	--white-d: hsl(var(--hue), 10%, 45%);
-	/* font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320)); */
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-
-
-html {
-  background: #fdfdfd;
-}
-
-h2{
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 2rem;
-  margin-bottom: 1rem;
-}
-
-h3{
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-h4{
-  font-size: 1.85rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-
-textarea {
-  height: 100vh;
-}
-
-.link-underline {
-  border-bottom-width: 0;
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#000000, #000000);
-  background-size: 0 3px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size .5s ease-in-out;
-}
-
-.link-underline:hover {
-  background-size: 100% 3px;
-  background-position: 0 100%
+  --primary: black;
 }
