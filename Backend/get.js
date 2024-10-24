@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("codeExchange");
-    const collection = database.collection("code");
+    const collection = database.collection("codes");
 
     const findBlock = await collection.findOne({ share: share });
 
