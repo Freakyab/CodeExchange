@@ -11,7 +11,7 @@ const codeSchema = new mongoose.Schema({
      },
 });
 
-export const Code = mongoose.models.code || mongoose.model('code', codeSchema);
+export const Codes = mongoose.models.Codes || mongoose.model('codes', codeSchema);
 
 const AccountSchema = new mongoose.Schema({
      username: {
@@ -28,4 +28,4 @@ const AccountSchema = new mongoose.Schema({
      }
 });
 
-export const Account = mongoose.models.account || mongoose.model('account', AccountSchema);
+export const Accounts = mongoose.models.accounts || mongoose.model('accounts', AccountSchema);
