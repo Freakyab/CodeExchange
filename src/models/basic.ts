@@ -9,9 +9,11 @@ const codeSchema = new mongoose.Schema({
           type: String,
           required: true
      },
+}, {
+     timestamps: true
 });
 
-export const Codes = mongoose.models.Codes || mongoose.model('codes', codeSchema);
+export const Codes = mongoose.models.codes || mongoose.model('codes', codeSchema);
 
 const AccountSchema = new mongoose.Schema({
      username: {

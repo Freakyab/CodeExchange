@@ -19,6 +19,7 @@
     "eslint-config-next": "^15.0.0",
     "framer-motion": "^10.18.0",
     "jwt-decode": "^3.1.2",
+    "lucide-react": "^0.453.0",
     "mongoose": "^8.7.2",
     "next": "^15.0.0",
     "postcss": "8.4.30",

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import {nextui} from "@nextui-org/react";
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
   darkMode: "class",
@@ -9,10 +9,10 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
 
- 
+
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -24,12 +24,17 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        "dark-radial": "radial-gradient(circle at 10% 20%, rgb(90, 92, 106) 0%, rgb(32, 45, 58) 81.3%)",
+        'radial-pattern': "radial-gradient(circle, #ccc 0, #ccc 25%, transparent 25%), radial-gradient(circle, #ccc 0, #ccc 25%, transparent 25%)",
       },
-
+      backgroundPosition: {
+        'custom': '0 0, 15px 15px',
+      },
+      backgroundSize: {
+        'custom': '30px 30px',
+      },
       colors: {
-        "dark-bg" :"#18181b",
-        
+        "dark-bg": "#18181b",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -39,7 +44,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
-        
+
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

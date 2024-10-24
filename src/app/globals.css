@@ -14,7 +14,6 @@
   font-size: 18px;
   background: #fff;
   
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,10 +27,6 @@
   color: #a0aec0;
 }
 
-/* .swiper-button-prev, .swiper-button-next::after{
-  background: #a0aec0;
-} */
-
 .input-icon-color {
   color: #a0aec0;
 }
@@ -42,4 +37,37 @@
 
 :root {
   --primary: black;
+}
+
+.fancyBackground {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  height: 100%;
+  background-image: radial-gradient(circle, #ccc 0, #ccc 25%, transparent 25%),
+    radial-gradient(circle, #ccc 0, #ccc 25%, transparent 25%);
+  background-position: 0 0, 15px 15px;
+  background-size: 30px 30px;
+  background-color: #eee;
+}
+
+h2{
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3{
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+h4{
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
 }
